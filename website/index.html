@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anthony Sottile - Resume</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin: 30px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            color: #2c3e50;
+               }
+        header h2 {
+            margin: 0;
+            font-size: 1em;
+            color: #2c3e50;
+        }
+        header p {
+            margin: 5px 0;
+            font-size: 1em;
+            color: #7f8c8d;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .section h2 {
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 5px;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        .section ul {
+            list-style: none;
+            padding: 0;
+        }
+        .section ul li {
+            margin-bottom: 20px;
+        }
+        .section .job-title {
+            font-weight: bold;
+            font-size: 1.2em;
+            color: #2980b9;
+        }
+        .section .date {
+            font-size: 0.9em;
+            color: #95a5a6;
+        }
+        .section p {
+            margin: 0;
+            font-size: 1em;
+            line-height: 1.6;
+            color: #2c3e50;
+        }
+        .section k {
+            margin: 0;
+            font-size: .85em;
+            line-height: 1.6;
+            color: #2c3e50;
+        }
+        .contact-info {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .contact-info a {
+            text-decoration: none;
+            color: #3498db;
+        }
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .skills li {
+            background-color: #3498db;
+            color: #fff;
+            padding: 8px 12px;
+            margin: 5px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Anthony Sottile</h1>
+            <h2>Information Technology Professional</h2>
+            <p>Email: <a href="mailto:tsottile@hotmail.com">tsottile@hotmail.com</a> | Phone: (406) 595-7701 | LinkedIn: <a href="https://linkedin.com/in/anthony-sottile" target="_blank">linkedin.com/in/anthony-sottile</a></p>
+ <p>Visitors: <span id="data"></span></p>
+  <script>
+        // URL of the API endpoint
+        const apiUrl = 'https://zg9wv62a21.execute-api.us-east-1.amazonaws.com/default/VisitorCounterDynamoDB';
+
+        // Function to make the API call
+        async function fetchData() {
+            try {
+                const response = await fetch(apiUrl); // Make the API call
+                if (!response.ok) { // Check if the response status is OK (200-299)
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json(); // Parse the JSON data from the response
+                document.getElementById('data').textContent = JSON.stringify(data, null, 2); // Display the data in the div
+            } catch (error) {
+                console.error('There was a problem with the fetch operation:', error);
+                document.getElementById('data').textContent = 'Error fetching data!';
+            }
+        }
+
+        // Call the function
+        fetchData();
+    </script>
+        </header>
+        
+        <div class="section">
+            <h2>Career Objective</h2>
+            <p>Professional Technician who demonstrates diligent and methodical work ethic, as well as a dedicated and committed presence. Seeking to obtain a position to continue utilizing and building upon technical qualifications and skills within information technology. In addition, given the opportunity to apply analytical, detail oriented thought processing to perform duties at the highest capability. Interested in gaining a position at a technological company, to expand on current skill-set and knowledge for future opportunities; to push for greater things.</p>
+        </div>
+        
+        <div class="section">
+            <h2>Work Experience</h2>
+            <ul>
+                <li>
+                    <span class="job-title">Field/Support Technician at CNWR, INC</span>
+                    <span class="date">02/2024 - Present</span>
+                    <br>
+                    <k>- Deliver exceptional Tier 1/2 IT support to ensure seamless client
+operations and satisfaction.</k><br>
+<k>- Same responsibilities as support technician but with added higher level
+support, project work, and on-sites as needed</k><br>
+<k>- Provide onsite support for issues deemed dispatch necessary</k><br>
+<k>- Conduct and complete assigned project work</k><br>
+<k>- Provide help desk support and resolve problems to partner satisfaction</k><br>
+<k>- Work closely with businesses and other organizations to develop tech
+solutions that help solve a customers specific business need</k><br>
+<k>- Manage and monitor networks, systems and devices remotely</k><br>
+<k>- Update configurations, utilities, software for workstations/servers</k><br>
+<k>- Perform, update, & document procedures</k><br>
+<k>- Perform escalation process of tickets unable to be triaged</k><br>
+                </li>
+                <li>
+                    <span class="job-title">Support Technician at CNWR, INC</span>
+                    <span class="date">03/2023 - 02/2024</span>
+                    <br>
+                    <k>- Monitor Service Desk for new tickets to be triaged by Help Desk team</k><br>
+                    <k>- Perform escalation process of tickets unable to be triaged</k><br>
+                    <k>- Split tickets that have several issues into their own approachable tickets</k><br>
+                    <k>- Provide help desk support and resolve problems to partner satisfaction</k><br>
+                    <k>- Serve as an outsourced IT department for many small firms</k><br>
+                    <k>- Perform onboarding and offboarding of clients users</k><br>
+                    <k>- Update configurations, utilities, software for workstations/servers</k><br>
+                    <k>- Perform, update, & document procedures</k><br>
+                    <k>- Monitor and respond quickly and effectively to client-facing and internal communications</k><br>
+                    <k>- Setup and deploy workstations for clients users</k><br>
+                    <k>- Perform moves, add, changes, & deletes of configurations in Active Directory</k><br>
+                </li>
+           <li>
+                    <span class="job-title">Switch Technician at T-Mobile</span>
+                    <span class="date">10/2021 - 11/2022</span>
+                    <br>
+                    <k>- Actively maintain cell phone towers remotely to ensure customer experience is optimal</k><br>
+                    <k>- Engage multiple teams across multiple projects to ensure new cell site builds
+are running smoothly</k><br>
+                    <k>- Keep up to date with Nokia telecom equipment to ensure understanding to
+better assist field techs remotely</k><br>
+                    <k>- Ensure data center facility is running properly and preventative
+maintenance is taking place</k><br>
+                    <k>- Consistent engagement in higher learning through various means to increase
+technical knowledge about networking systems and T-Mobile infrastructure</k><br>
+                </li>
+               <li>
+                    <span class="job-title">Mobile Expert at T-Mobile</span>
+                    <span class="date">10/2021 - 11/2022</span>
+                    <br>
+                    <k>- Responsible for maintaining up to date knowledge regarding new devices and software,as well as troubleshooting all customer devices; phones, tablets, laptops, etc.</k><br>
+                    <k>- Handle customer conflicts to maintain quality standards for customer satisfaction</k><br>
+                    <k>- Manage and handle cash drawers and inventory</k><br>
+                </li>
+        </div>
+        
+        <div class="section">
+            <h2>Certificates & Education</h2>
+            <ul>
+                <li>
+                    <span class="job-title">Comptia Network+</span>
+                    <span class="date">Feburary 2024</span>
+                    <br>
+                    <k>Comptia Information Technology Certification</k>
+                </li>
+                     <li>
+                    <span class="job-title">Computer Networking</span>
+                    <span class="date">March 2020</span>
+                    <br>
+                    <k>Google Information Technology Certification</k>
+                </li>
+                     <li>
+                    <span class="job-title">Technical Support Fundamentals</span>
+                    <span class="date">January 2020</span>
+                    <br>
+                    <k>Google Information Support Certification</k>
+                </li>
+                           <li>
+                    <span class="job-title">C++ & General Studies</span>
+                    <span class="date">08/2013 - 05/2014</span>
+                    <br>
+                    <k>Monroe County Community College</k>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h2>Skills</h2>
+            <ul class="skills">
+                <li>Azure</li>
+                <li>Active Directory</li>
+                <li>Windows Server</li>
+                <li>Microsoft Exchange</li>
+                <li>Microsoft 365</li>
+                <li>Virtualization</li>
+                <li>System Administration</li>
+                <li>Amazon Web Services</li>
+                <li>Google Workspace</li>
+                <li>Computer Networking</li>
+                <li>Technical Support</li>
+                <li>Remote User Support</li>
+                <li>Hardware Troubleshooting</li>
+                <li>Network Device Troubleshooting</li>
+                <li>System Builds & Installs</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h2>Additional Information</h2>
+            <p>- Working knowledge of numerous tools including RMMs, EDRs, RDP software, network monitoring tools,etc</p>     
+            <p>- Knowledge with administering Microsoft Entra/Azure, Active Directory, Microsoft 365, Exchange, Windows   Server</p>
+            <p>- Experience with Cisco, Meraki, pfSense, and Unifi networking devices</p>
+            <p>- Currently studying towards an AWS Solutions Architect certification</p>
+            <p>- Enjoys using free time to work on IT projects for own personal development and utilizing home lab xcp-ng setup as needed</p>
+        </div>
+    </div>
+</body>
+</html>
