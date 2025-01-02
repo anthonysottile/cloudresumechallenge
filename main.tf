@@ -156,17 +156,11 @@ resource "aws_cloudfront_origin_access_identity" "oai" {
 resource "aws_dynamodb_table" "visitor_counter_table" {
   name         = var.table_name
   hash_key     = "id"
-  range_key    = "views"
   billing_mode = "PAY_PER_REQUEST"
 
   attribute {
     name = "id"
     type = "S"
-  }
-
-  attribute {
-    name = "views"
-    type = "N"
   }
 }
 
