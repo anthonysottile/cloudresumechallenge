@@ -277,3 +277,9 @@ resource "aws_api_gateway_deployment" "visitor_counter_deployment" {
   depends_on  = [aws_api_gateway_integration.lambda_integration]
   rest_api_id = aws_api_gateway_rest_api.visitor_counter_api.id
 }
+
+resource "aws_api_gateway_stage" "visitor_counter_stage" {
+  deployment_id = aws_api_gateway_deployment.visitor_counter_deployment.id
+  rest_api_id = aws_api_gateway_rest_api.visitor_counter_api.id
+  stage_name = "main"
+}

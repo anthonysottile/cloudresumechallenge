@@ -1,5 +1,5 @@
 // URL of the API endpoint
-const apiUrl = 'https://zg9wv62a21.execute-api.us-east-1.amazonaws.com/default/VisitorCounterDynamoDB';
+const apiUrl = 'https://7zznb2t367.execute-api.us-east-1.amazonaws.com/main/counter';
 
 // Function to make the API call
 async function fetchData() {

@@ -100,3 +100,8 @@ variable "api_method" {
   default     = "GET"
 }
 
+variable "api_stage_name" {
+  default = "Name of API Gateway stage"
+  type = string
+  description = "main"
+}
