@@ -172,7 +172,7 @@ resource "aws_dynamodb_table_item" "dynamodb_views_item" {
   item = <<ITEM
 {
   "id": {"S": "1"},
-  "views": {"N": "200"}
+  "views": {"N": "1"}
 }
 ITEM
 }
