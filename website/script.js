@@ -1,5 +1,5 @@
 // URL of the API endpoint
-const apiUrl = 'https://7zznb2t367.execute-api.us-east-1.amazonaws.com/main/counter';
+const apiUrl = 'https://1d86ei9mq6.execute-api.us-east-1.amazonaws.com/main/counter';
 
 // Function to make the API call
 async function fetchData() {

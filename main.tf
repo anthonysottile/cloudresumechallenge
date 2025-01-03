@@ -5,6 +5,7 @@ provider "aws" {
 # S3 Bucket for Static Website
 resource "aws_s3_bucket" "static_site" {
   bucket = var.bucket_name
+  force_destroy = true
 }
 
 resource "aws_s3_bucket_acl" "static_site_acl" {
@@ -263,28 +264,26 @@ resource "aws_api_gateway_integration" "lambda_integration" {
   passthrough_behavior    = "WHEN_NO_MATCH"
 }
 
-resource "aws_api_gateway_method_response" "api_method_response" {
-  rest_api_id = aws_api_gateway_rest_api.visitor_counter_api.id
-  resource_id = aws_api_gateway_resource.visitor_counter_resource.id
-  http_method = "GET"
-  status_code = 200
-
-  response_parameters = {
-    "method.response.header.Access-Control-Allow-Origin" = true
-  }
-}
-
 resource "aws_api_gateway_integration_response" "api_int_response" {
   rest_api_id = aws_api_gateway_rest_api.visitor_counter_api.id
   resource_id = aws_api_gateway_resource.visitor_counter_resource.id
-  http_method = "GET"
+  http_method = aws_api_gateway_method_response.api_method_response.http_method
   status_code = 200
 
   response_parameters = {
     "method.response.header.Access-Control-Allow-Origin" = "'*'"
   }
+}
 
-  depends_on = [aws_api_gateway_method_response.api_method_response]
+resource "aws_api_gateway_method_response" "api_method_response" {
+  rest_api_id = aws_api_gateway_rest_api.visitor_counter_api.id
+  resource_id = aws_api_gateway_resource.visitor_counter_resource.id
+  http_method = aws_api_gateway_integration.lambda_integration.http_method
+  status_code = 200
+
+  response_parameters = {
+    "method.response.header.Access-Control-Allow-Origin" = true
+  }
 }
 
 # API Gateway permissions for Lambda
@@ -299,8 +298,11 @@ resource "aws_lambda_permission" "api_gateway_lambda" {
 
 # Deploy API
 resource "aws_api_gateway_deployment" "visitor_counter_deployment" {
-  depends_on  = [aws_api_gateway_integration.lambda_integration]
   rest_api_id = aws_api_gateway_rest_api.visitor_counter_api.id
+
+  triggers = {
+    redeployment = "${timestamp()}"
+  }
 }
 
 resource "aws_api_gateway_stage" "visitor_counter_stage" {
