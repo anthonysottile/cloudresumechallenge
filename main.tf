@@ -258,8 +258,33 @@ resource "aws_api_gateway_integration" "lambda_integration" {
   resource_id             = aws_api_gateway_resource.visitor_counter_resource.id
   http_method             = aws_api_gateway_method.visitor_counter_method.http_method
   integration_http_method = "POST"
-  type                    = "AWS_PROXY"
+  type                    = "AWS"
   uri                     = aws_lambda_function.visitor_counter_lambda.invoke_arn
+  passthrough_behavior    = "WHEN_NO_MATCH"
+}
+
+resource "aws_api_gateway_method_response" "api_method_response" {
+  rest_api_id = aws_api_gateway_rest_api.visitor_counter_api.id
+  resource_id = aws_api_gateway_resource.visitor_counter_resource.id
+  http_method = "GET"
+  status_code = 200
+
+  response_parameters = {
+    "method.response.header.Access-Control-Allow-Origin" = true
+  }
+}
+
+resource "aws_api_gateway_integration_response" "api_int_response" {
+  rest_api_id = aws_api_gateway_rest_api.visitor_counter_api.id
+  resource_id = aws_api_gateway_resource.visitor_counter_resource.id
+  http_method = "GET"
+  status_code = 200
+
+  response_parameters = {
+    "method.response.header.Access-Control-Allow-Origin" = "'*'"
+  }
+
+  depends_on = [aws_api_gateway_method_response.api_method_response]
 }
 
 # API Gateway permissions for Lambda
@@ -280,6 +305,6 @@ resource "aws_api_gateway_deployment" "visitor_counter_deployment" {
 
 resource "aws_api_gateway_stage" "visitor_counter_stage" {
   deployment_id = aws_api_gateway_deployment.visitor_counter_deployment.id
-  rest_api_id = aws_api_gateway_rest_api.visitor_counter_api.id
-  stage_name = "main"
+  rest_api_id   = aws_api_gateway_rest_api.visitor_counter_api.id
+  stage_name    = "main"
 }
