@@ -3,7 +3,7 @@ name: Deploy Specific Folders to S3 and Invalidate CloudFront
 on:
   push:
     paths:
-      - 'website/'
+      - 'website/**'
 
 jobs:
   deploy:
