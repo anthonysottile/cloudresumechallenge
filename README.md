@@ -1,7 +1,7 @@
 # Cloud Resume Challenge
 
 ## Introduction
-The **Cloud Resume Challenge** is a hands-on project designed to build and deploy a serverless resume website using cloud technologies. This project helped me gain practical experience with AWS services, DevOps practices, and infrastructure as code.
+The [**Cloud Resume Challenge**](https://cloudresumechallenge.dev/docs/the-challenge/aws/) is a hands-on project designed to build and deploy a serverless resume website using cloud technologies. This project helped me gain practical experience with AWS services, DevOps practices, and infrastructure as code.
 
 ## Features
 - Static website hosted on AWS S3.
